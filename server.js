@@ -1,5 +1,4 @@
 var express = require('express')
-var os = require('os');
 
 var app = express()
 
@@ -11,13 +10,18 @@ app.get('/api/whoami', function (req, res) {
             || req.connection.remoteAddress
             || req.socket.remoteAddress
             || req.connection.socket.remoteAddress;
-        output.language = req.headers["accept-language"].split(",")[0]
-        output.software = os.type() + " " + os.release()
+        
+        output.language = req.headers["accept-language"].split(",")[0];
+        
+        var ua = req.headers['user-agent'];
+        var regex = /\(.+?\)/
+        var result = ua.match(regex);
+        output.software = result[0].replace("(", "").replace(")", "");
 
-        res.json(output)
+        res.json(output);
     }
     catch (e) {
-        res.sendStatus(500)
+        res.sendStatus(500);
     }
 })
 
@@ -27,5 +31,5 @@ app.get('*', function (req, res) {
 });
 
 app.listen(process.env.PORT || 8080, function () {
-    console.log('App started')
+    console.log('App started');
 })
