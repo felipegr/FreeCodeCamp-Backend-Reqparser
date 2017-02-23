@@ -1,0 +1,22 @@
+{
+  "name": "reqparser",
+  "version": "1.0.0",
+  "description": "Request header parser microservice for FreeCodeCamp Backend Course",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/felipegr/FreeCodeCamp-Backend-Reqparser.git"
+  },
+  "author": "Felipe Godói Rosário",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/felipegr/FreeCodeCamp-Backend-Reqparser/issues"
+  },
+  "homepage": "https://github.com/felipegr/FreeCodeCamp-Backend-Reqparser#readme",
+  "dependencies": {
+    "express": "^4.14.1"
+  }
+}
