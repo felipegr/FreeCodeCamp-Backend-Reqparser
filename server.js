@@ -7,7 +7,10 @@ app.get('/api/whoami', function (req, res) {
     try {
         var output = {}
 
-        output.ipaddress = req.ip
+        output.ipaddress = req.headers['x-forwarded-for'].split(",")[0]
+            || req.connection.remoteAddress
+            || req.socket.remoteAddress
+            || req.connection.socket.remoteAddress;
         output.language = req.headers["accept-language"].split(",")[0]
         output.software = os.type() + " " + os.release()
 
